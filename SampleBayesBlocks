@@ -1,0 +1,45 @@
+[Sample MrBayes Commands]
+
+[forces state frequencies to equality
+BEGIN MRBAYES;
+set autoclose=yes nowarn=yes;
+LSET coding=variable;
+PRSET symdirihyperpr=fixed(infinity);
+mcmc ngen=10000000 samplefreq=100 printfreq=10000 nchains=1 nruns=1;
+ss alpha=0.3 nsteps=10;
+sumt burnin=25000;
+sump burnin=25000;
+end;]
+
+[Assumes characters come from all possible values of symmetry
+BEGIN MRBAYES;
+set autoclose=yes nowarn=yes;
+LSET coding=variable;
+PRSET symdirihyperpr=fixed(1.0);
+mcmc ngen=10000000 samplefreq=100 printfreq=10000 nchains=1 nruns=1;
+ss alpha=0.3 nsteps=10;
+sumt burnin=25000;
+sump burnin=25000;
+end;]
+
+[Assumes characters are mostly symmetrical
+BEGIN MRBAYES;
+set autoclose=yes nowarn=yes;
+LSET coding=variable;
+PRSET symdirihyperpr=fixed(2.0);
+mcmc ngen=10000000 samplefreq=100 printfreq=10000 nchains=1 nruns=1;
+ss alpha=0.3 nsteps=10;
+sumt burnin=25000;
+sump burnin=25000;
+end;]
+
+[Assumes characters are mostly asymmetrical
+BEGIN MRBAYES;
+set autoclose=yes nowarn=yes;
+LSET coding=variable;
+PRSET symdirihyperpr=fixed(.2);
+mcmc ngen=10000000 samplefreq=100 printfreq=10000 nchains=1 nruns=1;
+ss alpha=0.3 nsteps=10;
+sumt burnin=25000;
+sump burnin=25000;
+end;]
